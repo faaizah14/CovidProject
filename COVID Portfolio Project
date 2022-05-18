@@ -1,12 +1,25 @@
+/*
+
+SQL Queries
+
+*/
+
+
+1)
+
 Select *
 From CovidDeaths
 Where continent is not null 
 order by 3,4
 
+2)
+
 Select Location, date, total_cases, new_cases, total_deaths, population
 From CovidDeaths
 Where continent is not null 
 order by 1,2
+
+3)
 
 -- Total Cases vs Total Deaths
 -- Shows likelihood of dying if you contract covid in your country
@@ -17,6 +30,8 @@ Where location like 'India'
 and continent is not null 
 order by 1,2
 
+4)
+
 -- Total Cases vs Population
 -- Shows what percentage of population infected with Covid
 
@@ -24,6 +39,8 @@ Select Location, date, Population, total_cases,  (total_cases/population)*100 as
 From CovidDeaths
 Where location like 'India'
 order by 1,2
+
+5)
 
 -- Countries with Highest Infection Rate compared to Population
 
@@ -33,6 +50,8 @@ Where location like 'India'
 Group by Location, Population
 order by PercentPopulationInfected desc
 
+6)
+
 -- Countries with Highest Death Count per Population
 
 Select Location, MAX(Total_deaths) as TotalDeathCount
@@ -41,6 +60,8 @@ From CovidDeaths
 Where continent is not null 
 Group by Location
 order by TotalDeathCount desc
+
+7)
 
 -- BREAKING THINGS DOWN BY CONTINENT
 
@@ -53,6 +74,8 @@ Where continent is not null
 Group by continent
 order by TotalDeathCount desc
 
+8)
+
 -- GLOBAL NUMBERS
 
 Select date, location, SUM(new_cases) as total_cases, SUM(new_deaths) as total_deaths, SUM(new_deaths)/SUM(New_Cases)*100 as DeathPercentage
@@ -61,6 +84,8 @@ From CovidDeaths
 Where continent is not null 
 Group By date
 order by 1,2
+
+9)
 
 -- Total Population vs Vaccinations
 -- Shows Percentage of Population that has recieved at least one Covid Vaccine
